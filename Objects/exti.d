@@ -1,4 +1,4 @@
-./objects/led.o: hardware\led.c start\stm32f10x.h start\core_cm3.h \
+./objects/exti.o: hardware\exti.c start\stm32f10x.h start\core_cm3.h \
   start\system_stm32f10x.h user\stm32f10x_conf.h lib\stm32f10x_adc.h \
   lib\stm32f10x_bkp.h lib\stm32f10x_can.h lib\stm32f10x_cec.h \
   lib\stm32f10x_crc.h lib\stm32f10x_dac.h lib\stm32f10x_dbgmcu.h \
@@ -7,5 +7,5 @@
   lib\stm32f10x_iwdg.h lib\stm32f10x_pwr.h lib\stm32f10x_rcc.h \
   lib\stm32f10x_rtc.h lib\stm32f10x_sdio.h lib\stm32f10x_spi.h \
   lib\stm32f10x_tim.h lib\stm32f10x_usart.h lib\stm32f10x_wwdg.h \
-  lib\misc.h hardware\led.h user\config.h hardware\key.h sys\Delay.h \
-  sys\OLED.h hardware\exti.h
+  lib\misc.h hardware\exti.h user\config.h hardware\led.h hardware\key.h \
+  sys\Delay.h sys\OLED.h

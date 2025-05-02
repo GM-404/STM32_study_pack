@@ -739,6 +739,16 @@
               <FileType>5</FileType>
               <FilePath>.\hardware\key.h</FilePath>
             </File>
+            <File>
+              <FileName>exti.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\exti.c</FilePath>
+            </File>
+            <File>
+              <FileName>exti.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\exti.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

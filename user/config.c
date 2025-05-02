@@ -11,6 +11,9 @@ void Module_Init_Config(void) // 配置函数
     if (OLED_MODULE) { // OLED模块开关
         OLED_Init();   // OLED初始化
     }
+    if (EXTI_15_10_MODULE) { // EXTI模块开关
+        EXTI_15_10_Init();   // EXTI初始化
+    }
     OLED_ShowString(1, 1, "LED MOUDLE:"); // OLED显示字符串函数
     OLED_ShowString(2, 1, "KEY MOUDLE:"); // OLED显示字符串函数
     OLED_ShowNum(1, 13, LED_MODULE, 1);   // OLED显示数字函数
