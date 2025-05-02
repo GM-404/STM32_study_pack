@@ -9,9 +9,18 @@
 
 // 包含头文件
 #include "led.h"   // LED头文件
+#include "key.h"   // 按键头文件
 #include "Delay.h" // 延时头文件
-
-// 需要初始化的模块
+#include "OLED.h"  // OLED头文件
+// 模块总开关
+#define LED_MODULE  (1) // LED模块开关
+#define KEY_MODULE  (1) // 按键模块开关
+#define OLED_MODULE (1) // OLED模块开关
+// LED引脚定义
+#define LED_PIN GPIO_Pin_1 // 在这里定义LED的引脚  GPIOA
+#define KEY_PIN GPIO_Pin_0 // 按键引脚定义 GPIOB
+// define OLED引脚在对应的.c文件中定义
+//  初始化模块
 void Module_Init_Config(void); // 配置函数
 
 #endif // _CONFIG_H_

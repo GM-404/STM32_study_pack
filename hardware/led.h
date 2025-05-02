@@ -1,9 +1,10 @@
 #ifndef __LED_H__
 #define __LED_H__
-// #include "study_config.h"  //总开关文件，待添加
-#include "stm32f10x.h"                    // Device header
-#define ENABLE_LED_GPIOA_CLOCK (1)        // 使能LED模块GPIOA时钟,如果需要开启GPIOA的时钟置1
-#define LED_PIN                GPIO_Pin_1 // 在这里定义LED的引脚
+
+#include "stm32f10x.h"             // Device header
+#include "config.h"                // 配置头文件
+#define ENABLE_LED_GPIOA_CLOCK (1) // 使能LED模块GPIOA时钟,如果需要开启GPIOA的时钟置1
+
 /**
  * 函    数：LED初始化,自定义引脚，状态
  * 参    数：LED_PIN: LED引脚，见上文

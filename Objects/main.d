@@ -7,4 +7,5 @@
   lib\stm32f10x_iwdg.h lib\stm32f10x_pwr.h lib\stm32f10x_rcc.h \
   lib\stm32f10x_rtc.h lib\stm32f10x_sdio.h lib\stm32f10x_spi.h \
   lib\stm32f10x_tim.h lib\stm32f10x_usart.h lib\stm32f10x_wwdg.h \
-  lib\misc.h user\config.h hardware\led.h sys\Delay.h
+  lib\misc.h user\config.h hardware\led.h hardware\key.h sys\Delay.h \
+  sys\OLED.h
