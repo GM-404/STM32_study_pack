@@ -29,11 +29,11 @@ void LED_Init(uint16_t status)
 
 void LED1_Turn(void)
 {
-    if (GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_1) == 0) // 获取输出寄存器的状态，如果当前引脚输出低电平
+    if (GPIO_ReadOutputDataBit(GPIOA, LED_PIN) == 0) // 获取输出寄存器的状态，如果当前引脚输出低电平
     {
-        GPIO_SetBits(GPIOA, GPIO_Pin_1); // 则设置PA1引脚为高电平
-    } else                               // 否则，即当前引脚输出高电平
+        GPIO_SetBits(GPIOA, LED_PIN); // 则设置PA1引脚为高电平
+    } else                            // 否则，即当前引脚输出高电平
     {
-        GPIO_ResetBits(GPIOA, GPIO_Pin_1); // 则设置PA1引脚为低电平
+        GPIO_ResetBits(GPIOA, LED_PIN); // 则设置PA1引脚为低电平
     }
 }

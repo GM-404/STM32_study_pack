@@ -1,3 +1,9 @@
+/*
+ * 说明： 该模块本质为初始化一个引脚，控制其输出高低电平
+ *        该模块可以用于LED灯的控制，也可以用于其他GPIO的控制
+ * 使用时先再config.h中定义好引脚和打开模块开关
+ * 然后在led.h中打开使能GPIOA时钟的宏定义
+ */
 #ifndef __LED_H__
 #define __LED_H__
 
@@ -7,9 +13,10 @@
 
 /**
  * 函    数：LED初始化,自定义引脚，状态
- * 参    数：LED_PIN: LED引脚，见上文
+ *           LED_PIN: LED引脚，见config.h
  *       status: LED状态 1为高电平，0为低电平
  * 返 回 值：无
+ *
  */
 void LED_Init(uint16_t status); // GPIO初始化
 

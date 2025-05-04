@@ -1,3 +1,7 @@
+/*
+说明：该模块实际作用为OLED的初始化，清屏，显示字符，显示字符串，显示数字
+使用时先在config.h中定义好引脚和打开模块开关，然后编辑使用是在conffig.c中编辑
+*/
 #ifndef __OLED_H
 #define __OLED_H
 

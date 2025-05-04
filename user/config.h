@@ -20,15 +20,15 @@
 #define OLED_MODULE         (1) // OLED模块开关
 #define EXTI_15_10_MODULE   (1) // EXTI模块开关
 
-#define TIMER2_MODULE       (1)                    // 定时器2模块开关
+#define TIMER2_MODULE       (0)                    // 定时器2模块开关
 #define TIMER2_INTER_MODULE (1)                    // 定时器2内部时钟模式开关
 #define TIMER2_EXT_MODULE   (~TIMER2_INTER_MODULE) // 定时器2外部时钟模式开关
 
 // 引脚定义
 #define LED_PIN GPIO_Pin_1 // 在这里定义LED的引脚  GPIOA
 #define KEY_PIN GPIO_Pin_0 // 按键引脚定义 GPIOB
-// define OLED_PIN引脚在对应的.c文件中定义,默认PB8,PB9
-#define EXTI_15_10_MODULE_PIN  GPIO_Pin_13      // EXTI引脚定义 GPIOB
+// define OLED_PIN引脚在对应的.c文件中定义,默认PB8(SCL),PB9(SDA)
+#define EXTI_15_10_MODULE_PIN  GPIO_Pin_13      // EXTI引脚定义 GPIOB 13
 #define EXTI_15_10_MODULE_AFIO GPIO_PinSource13 // EXTI引脚映射到AFIO的引脚定义 与上面对应
 #define EXTI_15_10_MODULE_LINE EXTI_Line13      // EXTI线定义 EXTI14,与EXTI_15_10_MODULE_PIN对应
 #define TIMER2_MODULE_PIN      GPIO_Pin_0       // 定时器2引脚定义,在使能外部时钟时使用,PA0
