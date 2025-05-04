@@ -8,17 +8,21 @@
 /*参数设置-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --*/
 
 // 包含头文件
-#include "led.h"   // LED头文件
-#include "key.h"   // 按键头文件
-#include "Delay.h" // 延时头文件
-#include "OLED.h"  // OLED头文件
-#include "exti.h"  // EXTI头文件
-
+#include "led.h"    // LED头文件
+#include "key.h"    // 按键头文件
+#include "Delay.h"  // 延时头文件
+#include "OLED.h"   // OLED头文件
+#include "exti.h"   // EXTI头文件
+#include "timer2.h" // 定时器2头文件
 // 模块总开关
-#define LED_MODULE        (1) // LED模块开关
-#define KEY_MODULE        (1) // 按键模块开关
-#define OLED_MODULE       (1) // OLED模块开关
-#define EXTI_15_10_MODULE (1) // EXTI模块开关
+#define LED_MODULE          (1) // LED模块开关
+#define KEY_MODULE          (1) // 按键模块开关
+#define OLED_MODULE         (1) // OLED模块开关
+#define EXTI_15_10_MODULE   (1) // EXTI模块开关
+
+#define TIMER2_MODULE       (1)                    // 定时器2模块开关
+#define TIMER2_INTER_MODULE (1)                    // 定时器2内部时钟模式开关
+#define TIMER2_EXT_MODULE   (~TIMER2_INTER_MODULE) // 定时器2外部时钟模式开关
 
 // 引脚定义
 #define LED_PIN GPIO_Pin_1 // 在这里定义LED的引脚  GPIOA
@@ -27,7 +31,7 @@
 #define EXTI_15_10_MODULE_PIN  GPIO_Pin_13      // EXTI引脚定义 GPIOB
 #define EXTI_15_10_MODULE_AFIO GPIO_PinSource13 // EXTI引脚映射到AFIO的引脚定义 与上面对应
 #define EXTI_15_10_MODULE_LINE EXTI_Line13      // EXTI线定义 EXTI14,与EXTI_15_10_MODULE_PIN对应
-
+#define TIMER2_MODULE_PIN      GPIO_Pin_0       // 定时器2引脚定义,在使能外部时钟时使用,PA0
 //  初始化模块
 void Module_Init_Config(void); // 配置函数
 
