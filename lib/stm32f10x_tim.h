@@ -284,12 +284,12 @@ typedef struct
  * @{
  */
 
-#define TIM_OCMode_Timing    ((uint16_t)0x0000)
-#define TIM_OCMode_Active    ((uint16_t)0x0010)
-#define TIM_OCMode_Inactive  ((uint16_t)0x0020)
-#define TIM_OCMode_Toggle    ((uint16_t)0x0030)
-#define TIM_OCMode_PWM1      ((uint16_t)0x0060)
-#define TIM_OCMode_PWM2      ((uint16_t)0x0070)
+#define TIM_OCMode_Timing    ((uint16_t)0x0000) // 冻结模式
+#define TIM_OCMode_Active    ((uint16_t)0x0010) // 输出比较模式,相等时置位
+#define TIM_OCMode_Inactive  ((uint16_t)0x0020) // 空闲模式相等时置无效位
+#define TIM_OCMode_Toggle    ((uint16_t)0x0030) // 翻转模式
+#define TIM_OCMode_PWM1      ((uint16_t)0x0060) // PWM模式1
+#define TIM_OCMode_PWM2      ((uint16_t)0x0070) // PWM模式2
 #define IS_TIM_OC_MODE(MODE) (((MODE) == TIM_OCMode_Timing) ||   \
                               ((MODE) == TIM_OCMode_Active) ||   \
                               ((MODE) == TIM_OCMode_Inactive) || \
@@ -1050,16 +1050,20 @@ typedef struct
 
 void TIM_DeInit(TIM_TypeDef *TIMx);
 void TIM_TimeBaseInit(TIM_TypeDef *TIMx, TIM_TimeBaseInitTypeDef *TIM_TimeBaseInitStruct); // 初始化定时单元
+
 void TIM_OC1Init(TIM_TypeDef *TIMx, TIM_OCInitTypeDef *TIM_OCInitStruct);
 void TIM_OC2Init(TIM_TypeDef *TIMx, TIM_OCInitTypeDef *TIM_OCInitStruct);
 void TIM_OC3Init(TIM_TypeDef *TIMx, TIM_OCInitTypeDef *TIM_OCInitStruct);
 void TIM_OC4Init(TIM_TypeDef *TIMx, TIM_OCInitTypeDef *TIM_OCInitStruct);
+
 void TIM_ICInit(TIM_TypeDef *TIMx, TIM_ICInitTypeDef *TIM_ICInitStruct);
 void TIM_PWMIConfig(TIM_TypeDef *TIMx, TIM_ICInitTypeDef *TIM_ICInitStruct);
 void TIM_BDTRConfig(TIM_TypeDef *TIMx, TIM_BDTRInitTypeDef *TIM_BDTRInitStruct);
 void TIM_TimeBaseStructInit(TIM_TimeBaseInitTypeDef *TIM_TimeBaseInitStruct);
+
 void TIM_OCStructInit(TIM_OCInitTypeDef *TIM_OCInitStruct);
 void TIM_ICStructInit(TIM_ICInitTypeDef *TIM_ICInitStruct);
+
 void TIM_BDTRStructInit(TIM_BDTRInitTypeDef *TIM_BDTRInitStruct);
 void TIM_Cmd(TIM_TypeDef *TIMx, FunctionalState NewState);
 void TIM_CtrlPWMOutputs(TIM_TypeDef *TIMx, FunctionalState NewState);
@@ -1082,26 +1086,32 @@ void TIM_CounterModeConfig(TIM_TypeDef *TIMx, uint16_t TIM_CounterMode);
 void TIM_SelectInputTrigger(TIM_TypeDef *TIMx, uint16_t TIM_InputTriggerSource);
 void TIM_EncoderInterfaceConfig(TIM_TypeDef *TIMx, uint16_t TIM_EncoderMode,
                                 uint16_t TIM_IC1Polarity, uint16_t TIM_IC2Polarity);
+
 void TIM_ForcedOC1Config(TIM_TypeDef *TIMx, uint16_t TIM_ForcedAction);
 void TIM_ForcedOC2Config(TIM_TypeDef *TIMx, uint16_t TIM_ForcedAction);
 void TIM_ForcedOC3Config(TIM_TypeDef *TIMx, uint16_t TIM_ForcedAction);
 void TIM_ForcedOC4Config(TIM_TypeDef *TIMx, uint16_t TIM_ForcedAction);
+
 void TIM_ARRPreloadConfig(TIM_TypeDef *TIMx, FunctionalState NewState);
 void TIM_SelectCOM(TIM_TypeDef *TIMx, FunctionalState NewState);
 void TIM_SelectCCDMA(TIM_TypeDef *TIMx, FunctionalState NewState);
 void TIM_CCPreloadControl(TIM_TypeDef *TIMx, FunctionalState NewState);
+
 void TIM_OC1PreloadConfig(TIM_TypeDef *TIMx, uint16_t TIM_OCPreload);
 void TIM_OC2PreloadConfig(TIM_TypeDef *TIMx, uint16_t TIM_OCPreload);
 void TIM_OC3PreloadConfig(TIM_TypeDef *TIMx, uint16_t TIM_OCPreload);
 void TIM_OC4PreloadConfig(TIM_TypeDef *TIMx, uint16_t TIM_OCPreload);
+
 void TIM_OC1FastConfig(TIM_TypeDef *TIMx, uint16_t TIM_OCFast);
 void TIM_OC2FastConfig(TIM_TypeDef *TIMx, uint16_t TIM_OCFast);
 void TIM_OC3FastConfig(TIM_TypeDef *TIMx, uint16_t TIM_OCFast);
 void TIM_OC4FastConfig(TIM_TypeDef *TIMx, uint16_t TIM_OCFast);
+
 void TIM_ClearOC1Ref(TIM_TypeDef *TIMx, uint16_t TIM_OCClear);
 void TIM_ClearOC2Ref(TIM_TypeDef *TIMx, uint16_t TIM_OCClear);
 void TIM_ClearOC3Ref(TIM_TypeDef *TIMx, uint16_t TIM_OCClear);
 void TIM_ClearOC4Ref(TIM_TypeDef *TIMx, uint16_t TIM_OCClear);
+
 void TIM_OC1PolarityConfig(TIM_TypeDef *TIMx, uint16_t TIM_OCPolarity);
 void TIM_OC1NPolarityConfig(TIM_TypeDef *TIMx, uint16_t TIM_OCNPolarity);
 void TIM_OC2PolarityConfig(TIM_TypeDef *TIMx, uint16_t TIM_OCPolarity);
@@ -1109,8 +1119,10 @@ void TIM_OC2NPolarityConfig(TIM_TypeDef *TIMx, uint16_t TIM_OCNPolarity);
 void TIM_OC3PolarityConfig(TIM_TypeDef *TIMx, uint16_t TIM_OCPolarity);
 void TIM_OC3NPolarityConfig(TIM_TypeDef *TIMx, uint16_t TIM_OCNPolarity);
 void TIM_OC4PolarityConfig(TIM_TypeDef *TIMx, uint16_t TIM_OCPolarity);
+
 void TIM_CCxCmd(TIM_TypeDef *TIMx, uint16_t TIM_Channel, uint16_t TIM_CCx);
 void TIM_CCxNCmd(TIM_TypeDef *TIMx, uint16_t TIM_Channel, uint16_t TIM_CCxN);
+
 void TIM_SelectOCxM(TIM_TypeDef *TIMx, uint16_t TIM_Channel, uint16_t TIM_OCMode);
 void TIM_UpdateDisableConfig(TIM_TypeDef *TIMx, FunctionalState NewState);
 void TIM_UpdateRequestConfig(TIM_TypeDef *TIMx, uint16_t TIM_UpdateSource);
@@ -1121,10 +1133,12 @@ void TIM_SelectSlaveMode(TIM_TypeDef *TIMx, uint16_t TIM_SlaveMode);
 void TIM_SelectMasterSlaveMode(TIM_TypeDef *TIMx, uint16_t TIM_MasterSlaveMode);
 void TIM_SetCounter(TIM_TypeDef *TIMx, uint16_t Counter);
 void TIM_SetAutoreload(TIM_TypeDef *TIMx, uint16_t Autoreload);
+
 void TIM_SetCompare1(TIM_TypeDef *TIMx, uint16_t Compare1);
 void TIM_SetCompare2(TIM_TypeDef *TIMx, uint16_t Compare2);
 void TIM_SetCompare3(TIM_TypeDef *TIMx, uint16_t Compare3);
 void TIM_SetCompare4(TIM_TypeDef *TIMx, uint16_t Compare4);
+
 void TIM_SetIC1Prescaler(TIM_TypeDef *TIMx, uint16_t TIM_ICPSC);
 void TIM_SetIC2Prescaler(TIM_TypeDef *TIMx, uint16_t TIM_ICPSC);
 void TIM_SetIC3Prescaler(TIM_TypeDef *TIMx, uint16_t TIM_ICPSC);

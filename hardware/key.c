@@ -10,10 +10,10 @@ void KEY_Init(void) // 按键初始化
         RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE); // 使能GPIOB时钟
     }
     GPIO_InitTypeDef GPIO_InitStructure;              // GPIO初始化结构体
-    GPIO_InitStructure.GPIO_Pin   = KEY_PIN;          // PA0引脚
+    GPIO_InitStructure.GPIO_Pin   = KEY_PIN;          // PB0引脚
     GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IPU;    // 上拉输入模式
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; // 50MHz速度
-    GPIO_Init(GPIOB, &GPIO_InitStructure);            // 初始化GPIOA
+    GPIO_Init(GPIOB, &GPIO_InitStructure);            // 初始化GPIOB
 }
 /*
  *@brief 按键扫描函数

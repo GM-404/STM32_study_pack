@@ -210,6 +210,48 @@
           },
           {
             "path": "user/stm32f10x_it.h"
+          },
+          {
+            "path": "user/config.c"
+          },
+          {
+            "path": "user/config.h"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "hardware",
+        "files": [
+          {
+            "path": "hardware/led.c"
+          },
+          {
+            "path": "hardware/led.h"
+          },
+          {
+            "path": "hardware/key.c"
+          },
+          {
+            "path": "hardware/key.h"
+          },
+          {
+            "path": "hardware/exti.c"
+          },
+          {
+            "path": "hardware/exti.h"
+          },
+          {
+            "path": "hardware/timer2.c"
+          },
+          {
+            "path": "hardware/timer2.h"
+          },
+          {
+            "path": "hardware/pwm.c"
+          },
+          {
+            "path": "hardware/pwm.h"
           }
         ],
         "folders": []
@@ -217,8 +259,8 @@
     ]
   },
   "outDir": "build",
-  "deviceName": null,
-  "packDir": null,
+  "deviceName": "STM32F103C8",
+  "packDir": ".pack/Keil/STM32F1xx_DFP.2.3.0",
   "miscInfo": {
     "uid": "123a53fde2e049cdb237aee4b72e79c9"
   },
@@ -339,19 +381,31 @@
         },
         "options": "null"
       },
-      "uploader": "JLink",
+      "uploader": "STLink",
       "uploadConfig": {
         "bin": "",
-        "baseAddr": "",
-        "cpuInfo": {
-          "vendor": "null",
-          "cpuName": "null"
-        },
-        "proType": 1,
-        "speed": 8000,
+        "proType": "SWD",
+        "resetMode": "default",
+        "runAfterProgram": true,
+        "speed": 4000,
+        "address": "0x8000000",
+        "elFile": "None",
+        "optionBytes": ".eide/target_1.st.option.bytes.ini",
         "otherCmds": ""
       },
-      "uploadConfigMap": {},
+      "uploadConfigMap": {
+        "JLink": {
+          "bin": "",
+          "baseAddr": "",
+          "cpuInfo": {
+            "vendor": "null",
+            "cpuName": "null"
+          },
+          "proType": 1,
+          "speed": 8000,
+          "otherCmds": ""
+        }
+      },
       "custom_dep": {
         "name": "default",
         "incList": [
@@ -359,12 +413,19 @@
           "start",
           "sys",
           "user",
-          ".cmsis/include",
+          "hardware",
           "RTE/_Target_1"
         ],
-        "libList": [],
+        "libList": [
+          "start",
+          "sys",
+          "user",
+          "lib",
+          "hardware"
+        ],
         "defineList": [
-          "USE_STDPERIPH_DRIVER"
+          "USE_STDPERIPH_DRIVER",
+          "STM32F10X_MD"
         ]
       },
       "builderOptions": {

@@ -759,6 +759,26 @@
               <FileType>5</FileType>
               <FilePath>.\hardware\timer2.h</FilePath>
             </File>
+            <File>
+              <FileName>pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>pwm.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\pwm.h</FilePath>
+            </File>
+            <File>
+              <FileName>timer3.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\timer3.h</FilePath>
+            </File>
+            <File>
+              <FileName>time3.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\time3.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
