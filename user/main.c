@@ -20,6 +20,6 @@ int main(void)
         OLED_ShowNum(4, 1, Get_Number_Timer2_Exti(), 5); // 显示计数器变化量
         OLED_ShowNum(3, 7, Get_Count_Timer3(), 5);       // 显示计数器变化量
         OLED_ShowNum(4, 7, Get_Number_Timer3_Exti(), 5); // 显示计数器变化量
-        // PWM_Breathe_SetCompare1();
+        PWM_Breathe_SetCompare1();
     }
 }

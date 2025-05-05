@@ -409,6 +409,7 @@
       "custom_dep": {
         "name": "default",
         "incList": [
+          ".",
           "lib",
           "start",
           "sys",

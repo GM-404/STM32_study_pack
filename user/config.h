@@ -31,7 +31,7 @@
 // 定时器3外部时钟模式暂时不可用
 #define TIMER3_EXT_MODULE 0 // (~TIMER3_INTER_MODULE) // 定时器3外部时钟模式开关
 
-#define PWM_MODULE        (0) // PWM模块开关
+#define PWM_MODULE        (1) // PWM模块开关
 
 // 引脚定义
 #define LED_PIN GPIO_Pin_3 // 在这里定义LED的引脚  GPIOA

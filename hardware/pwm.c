@@ -38,15 +38,15 @@ void PWM_Init(void)
     TIM_Cmd(TIM2, ENABLE); // 使能TIM3
 }
 
-void PWM_Breathe_SetCompare1()
+void PWM_Breathe_SetCompare1() // 如果全打开会超时影响定时器效果
 {
-    uint16_t Compare = 0; // 占空比变量
-    for (Compare = 0; Compare <= 100; Compare++) {
-        TIM_SetCompare1(TIM2, Compare); // 设置占空比
-        Delay_ms(10);                   // 延时10ms
-    }
-    for (Compare = 100; Compare >= 0; Compare--) {
-        TIM_SetCompare1(TIM2, Compare); // 设置占空比
-        Delay_ms(10);                   // 延时10ms
-    }
+    // uint16_t i = 0; // 定义变量i
+    // for (i = 0; i <= 100; i++) {
+    TIM_SetCompare1(TIM2, 50); // 设置占空比 // 依次将定时器的CCR寄存器设置为0~100，PWM占空比逐渐增大，LED逐渐变亮
+    //     Delay_ms(10);             // 延时10ms
+    // }
+    // for (i = 0; i <= 100; i++) {
+    //     TIM_SetCompare1(TIM2, 100 - i); // 设置占空比 // 依次将定时器的CCR寄存器设置为100~0，PWM占空比逐渐减小，LED逐渐变暗
+    //     Delay_ms(10);                   // 延时10ms
+    // }
 }
