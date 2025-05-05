@@ -5,10 +5,15 @@ void PWM_Init(void)
 {
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);  // 使能TIM2时钟
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE); // 使能GPIOA时钟
+    if (PWM_PWM_MODULE_AFIO) {
+        RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);     // 使能AFIO时钟
+        GPIO_PinRemapConfig(GPIO_PartialRemap1_TIM2, ENABLE);    // 使能TIM2重映射
+        GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE); // 使能SWD重映射
+    }
 
     GPIO_InitTypeDef GPIO_InitStructure;
     GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AF_PP; // 设置为复用推挽输出模式
-    GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_0;      // 设置PA0为TIM2_CH1输出
+    GPIO_InitStructure.GPIO_Pin   = PWM_MODULE_PIN;  // 设置PA0为TIM2_CH1输出
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_Init(GPIOA, &GPIO_InitStructure); // 初始化GPIOA
 
@@ -17,8 +22,8 @@ void PWM_Init(void)
     TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
     TIM_TimeBaseStructure.TIM_ClockDivision     = TIM_CKD_DIV1;       // 设置时钟分频系数
     TIM_TimeBaseStructure.TIM_CounterMode       = TIM_CounterMode_Up; // 设置计数模式为向上计数模式
-    TIM_TimeBaseStructure.TIM_Period            = 100 - 1;            // 设置计数周期为100  ARR   分辨率为1%
-    TIM_TimeBaseStructure.TIM_Prescaler         = 720 - 1;            // 设置预分频器为7200，计数频率为10KHz PSC
+    TIM_TimeBaseStructure.TIM_Period            = 20000 - 1;          // 设置计数周期为100  ARR   分辨率为1%
+    TIM_TimeBaseStructure.TIM_Prescaler         = 72 - 1;             // 设置预分频器为7200，计数频率为10KHz PSC
     TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;                  // 设置重复计数器为0
     TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);                   // 初始化TIM2
 
@@ -42,11 +47,15 @@ void PWM_Breathe_SetCompare1() // 如果全打开会超时影响定时器效果
 {
     // uint16_t i = 0; // 定义变量i
     // for (i = 0; i <= 100; i++) {
-    TIM_SetCompare1(TIM2, 50); // 设置占空比 // 依次将定时器的CCR寄存器设置为0~100，PWM占空比逐渐增大，LED逐渐变亮
+    TIM_SetCompare1(TIM2, 10); // 设置占空比 // 依次将定时器的CCR寄存器设置为0~100，PWM占空比逐渐增大，LED逐渐变亮
     //     Delay_ms(10);             // 延时10ms
     // }
     // for (i = 0; i <= 100; i++) {
     //     TIM_SetCompare1(TIM2, 100 - i); // 设置占空比 // 依次将定时器的CCR寄存器设置为100~0，PWM占空比逐渐减小，LED逐渐变暗
     //     Delay_ms(10);                   // 延时10ms
     // }
+}
+void PWM_Enjine_SetCompare1(float angle) // 如果全打开会超时影响定时器效果
+{
+    TIM_SetCompare1(TIM2, angle / 180 * 2000 + 500);
 }

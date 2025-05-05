@@ -252,6 +252,12 @@
           },
           {
             "path": "hardware/pwm.h"
+          },
+          {
+            "path": "hardware/timer3.h"
+          },
+          {
+            "path": "hardware/time3.c"
           }
         ],
         "folders": []
@@ -425,8 +431,7 @@
           "hardware"
         ],
         "defineList": [
-          "USE_STDPERIPH_DRIVER",
-          "STM32F10X_MD"
+          "USE_STDPERIPH_DRIVER"
         ]
       },
       "builderOptions": {

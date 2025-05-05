@@ -3,12 +3,5 @@
         {
             "path": "."
         }
-    ],
-    "settings": {
-        "files.associations": {
-            "stm32f10x_adc.h": "c",
-            "stm32f10x.h": "c"
-        }
-    },
-    "extensions": {}
+    ]
 }
