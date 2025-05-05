@@ -21,12 +21,14 @@ void PWM_Init(void)
     TIM_InternalClockConfig(TIM2); // 配置TIM2为内部时钟模式
 
     TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
-    TIM_TimeBaseStructure.TIM_ClockDivision     = TIM_CKD_DIV1;       // 设置时钟分频系数
-    TIM_TimeBaseStructure.TIM_CounterMode       = TIM_CounterMode_Up; // 设置计数模式为向上计数模式
-    TIM_TimeBaseStructure.TIM_Period            = 20000 - 1;          // 设置计数周期为100  ARR   分辨率为1%
-    TIM_TimeBaseStructure.TIM_Prescaler         = 72 - 1;             // 设置预分频器为7200，计数频率为10KHz PSC
-    TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;                  // 设置重复计数器为0
-    TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);                   // 初始化TIM2
+    TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;       // 设置时钟分频系数
+    TIM_TimeBaseStructure.TIM_CounterMode   = TIM_CounterMode_Up; // 设置计数模式为向上计数模式
+    // TIM_TimeBaseStructure.TIM_Period            = 20000 - 1;          // 设置计数周期为100  ARR   分辨率为1%
+    // TIM_TimeBaseStructure.TIM_Prescaler         = 72 - 1;             // 设置预分频器为7200，计数频率为10KHz PSC
+    TIM_TimeBaseStructure.TIM_Period            = 100 - 1; // 设置计数周期为100  ARR   分辨率为1%
+    TIM_TimeBaseStructure.TIM_Prescaler         = 36 - 1;  // 设置预分频器为7200，计数频率为10KHz PSC
+    TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;       // 设置重复计数器为0
+    TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);        // 初始化TIM2
 
     TIM_OCInitTypeDef TIM_OCInitStructure;
     TIM_OCStructInit(&TIM_OCInitStructure);                       // 初始化TIM2通道1的输出比较结构体

@@ -31,4 +31,7 @@ void Module_Init_Config(void) // 配置函数
     if (PWM_MODULE) { // PWM模块开关
         PWM_Init();   // PWM初始化
     }
+    if (MOTOR_MODULE) { // 直流电机模块开关
+        Motor_Init();   // 直流电机初始化
+    }
 }

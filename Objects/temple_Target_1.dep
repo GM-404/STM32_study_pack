@@ -761,7 +761,7 @@ I (sys\OLED.h)(0x68175E80)
 I (sys\OLED_Font.h)(0x680A5A9A)
 F (.\sys\OLED.h)(0x68175E80)()
 F (.\sys\OLED_Font.h)(0x680A5A9A)()
-F (.\user\main.c)(0x68187521)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib -I ./start -I ./sys -I ./user -I ./hardware-IC:/keil/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ./objects/main.o -MMD)
+F (.\user\main.c)(0x68187E80)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib -I ./start -I ./sys -I ./user -I ./hardware-IC:/keil/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ./objects/main.o -MMD)
 I (start\stm32f10x.h)(0x61605444)
 I (start\core_cm3.h)(0x61605444)
 I (start\system_stm32f10x.h)(0x61605444)
@@ -789,7 +789,7 @@ I (lib\stm32f10x_tim.h)(0x681774E3)
 I (lib\stm32f10x_usart.h)(0x61605445)
 I (lib\stm32f10x_wwdg.h)(0x61605445)
 I (lib\misc.h)(0x68109191)
-I (user\config.h)(0x681872B8)
+I (user\config.h)(0x68187FAF)
 I (hardware\led.h)(0x68175E80)
 I (hardware\key.h)(0x68175E80)
 I (sys\Delay.h)(0x6130920D)
@@ -798,6 +798,7 @@ I (hardware\exti.h)(0x68175E80)
 I (hardware\timer2.h)(0x68175E80)
 I (hardware\timer3.h)(0x68182432)
 I (hardware\pwm.h)(0x6818745D)
+I (hardware\motor.h)(0x68187A33)
 F (.\user\stm32f10x_conf.h)(0x61605441)()
 F (.\user\stm32f10x_it.c)(0x61605442)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib -I ./start -I ./sys -I ./user -I ./hardware-IC:/keil/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ./objects/stm32f10x_it.o -MMD)
 I (user\stm32f10x_it.h)(0x61605442)
@@ -829,8 +830,8 @@ I (lib\stm32f10x_usart.h)(0x61605445)
 I (lib\stm32f10x_wwdg.h)(0x61605445)
 I (lib\misc.h)(0x68109191)
 F (.\user\stm32f10x_it.h)(0x61605442)()
-F (.\user\config.c)(0x681825C5)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib -I ./start -I ./sys -I ./user -I ./hardware-IC:/keil/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ./objects/config.o -MMD)
-I (user\config.h)(0x681872B8)
+F (.\user\config.c)(0x68187CAF)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib -I ./start -I ./sys -I ./user -I ./hardware-IC:/keil/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ./objects/config.o -MMD)
+I (user\config.h)(0x68187FAF)
 I (hardware\led.h)(0x68175E80)
 I (start\stm32f10x.h)(0x61605444)
 I (start\core_cm3.h)(0x61605444)
@@ -866,7 +867,8 @@ I (hardware\exti.h)(0x68175E80)
 I (hardware\timer2.h)(0x68175E80)
 I (hardware\timer3.h)(0x68182432)
 I (hardware\pwm.h)(0x6818745D)
-F (.\user\config.h)(0x681872B8)()
+I (hardware\motor.h)(0x68187A33)
+F (.\user\config.h)(0x68187FAF)()
 F (.\hardware\led.c)(0x68175E80)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib -I ./start -I ./sys -I ./user -I ./hardware-IC:/keil/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ./objects/led.o -MMD)
 I (start\stm32f10x.h)(0x61605444)
 I (start\core_cm3.h)(0x61605444)
@@ -896,7 +898,7 @@ I (lib\stm32f10x_usart.h)(0x61605445)
 I (lib\stm32f10x_wwdg.h)(0x61605445)
 I (lib\misc.h)(0x68109191)
 I (hardware\led.h)(0x68175E80)
-I (user\config.h)(0x681872B8)
+I (user\config.h)(0x68187FAF)
 I (hardware\key.h)(0x68175E80)
 I (sys\Delay.h)(0x6130920D)
 I (sys\OLED.h)(0x68175E80)
@@ -904,6 +906,7 @@ I (hardware\exti.h)(0x68175E80)
 I (hardware\timer2.h)(0x68175E80)
 I (hardware\timer3.h)(0x68182432)
 I (hardware\pwm.h)(0x6818745D)
+I (hardware\motor.h)(0x68187A33)
 F (.\hardware\led.h)(0x68175E80)()
 F (.\hardware\key.c)(0x681784DB)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib -I ./start -I ./sys -I ./user -I ./hardware-IC:/keil/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ./objects/key.o -MMD)
 I (start\stm32f10x.h )(0x61605444)
@@ -935,7 +938,7 @@ I (lib\stm32f10x_usart.h)(0x61605445)
 I (lib\stm32f10x_wwdg.h)(0x61605445)
 I (lib\misc.h)(0x68109191)
 I (hardware\key.h)(0x68175E80)
-I (user\config.h)(0x681872B8)
+I (user\config.h)(0x68187FAF)
 I (hardware\led.h)(0x68175E80)
 I (sys\Delay.h)(0x6130920D)
 I (sys\OLED.h)(0x68175E80)
@@ -943,6 +946,7 @@ I (hardware\exti.h)(0x68175E80)
 I (hardware\timer2.h)(0x68175E80)
 I (hardware\timer3.h)(0x68182432)
 I (hardware\pwm.h)(0x6818745D)
+I (hardware\motor.h)(0x68187A33)
 F (.\hardware\key.h)(0x68175E80)()
 F (.\hardware\exti.c)(0x68175C2D)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib -I ./start -I ./sys -I ./user -I ./hardware-IC:/keil/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ./objects/exti.o -MMD)
 I (start\stm32f10x.h)(0x61605444)
@@ -973,7 +977,7 @@ I (lib\stm32f10x_usart.h)(0x61605445)
 I (lib\stm32f10x_wwdg.h)(0x61605445)
 I (lib\misc.h)(0x68109191)
 I (hardware\exti.h)(0x68175E80)
-I (user\config.h)(0x681872B8)
+I (user\config.h)(0x68187FAF)
 I (hardware\led.h)(0x68175E80)
 I (hardware\key.h)(0x68175E80)
 I (sys\Delay.h)(0x6130920D)
@@ -981,6 +985,7 @@ I (sys\OLED.h)(0x68175E80)
 I (hardware\timer2.h)(0x68175E80)
 I (hardware\timer3.h)(0x68182432)
 I (hardware\pwm.h)(0x6818745D)
+I (hardware\motor.h)(0x68187A33)
 F (.\hardware\exti.h)(0x68175E80)()
 F (.\hardware\timer2.c)(0x68178236)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib -I ./start -I ./sys -I ./user -I ./hardware-IC:/keil/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ./objects/timer2.o -MMD)
 I (start\stm32f10x.h)(0x61605444)
@@ -1011,7 +1016,7 @@ I (lib\stm32f10x_usart.h)(0x61605445)
 I (lib\stm32f10x_wwdg.h)(0x61605445)
 I (lib\misc.h)(0x68109191)
 I (hardware\timer2.h)(0x68175E80)
-I (user\config.h)(0x681872B8)
+I (user\config.h)(0x68187FAF)
 I (hardware\led.h)(0x68175E80)
 I (hardware\key.h)(0x68175E80)
 I (sys\Delay.h)(0x6130920D)
@@ -1019,8 +1024,9 @@ I (sys\OLED.h)(0x68175E80)
 I (hardware\exti.h)(0x68175E80)
 I (hardware\timer3.h)(0x68182432)
 I (hardware\pwm.h)(0x6818745D)
+I (hardware\motor.h)(0x68187A33)
 F (.\hardware\timer2.h)(0x68175E80)()
-F (.\hardware\pwm.c)(0x68187669)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib -I ./start -I ./sys -I ./user -I ./hardware-IC:/keil/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ./objects/pwm.o -MMD)
+F (.\hardware\pwm.c)(0x68187F6D)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib -I ./start -I ./sys -I ./user -I ./hardware-IC:/keil/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ./objects/pwm.o -MMD)
 I (start\stm32f10x.h)(0x61605444)
 I (start\core_cm3.h)(0x61605444)
 I (start\system_stm32f10x.h)(0x61605444)
@@ -1049,7 +1055,7 @@ I (lib\stm32f10x_usart.h)(0x61605445)
 I (lib\stm32f10x_wwdg.h)(0x61605445)
 I (lib\misc.h)(0x68109191)
 I (hardware\pwm.h)(0x6818745D)
-I (user\config.h)(0x681872B8)
+I (user\config.h)(0x68187FAF)
 I (hardware\led.h)(0x68175E80)
 I (hardware\key.h)(0x68175E80)
 I (sys\Delay.h)(0x6130920D)
@@ -1057,6 +1063,7 @@ I (sys\OLED.h)(0x68175E80)
 I (hardware\exti.h)(0x68175E80)
 I (hardware\timer2.h)(0x68175E80)
 I (hardware\timer3.h)(0x68182432)
+I (hardware\motor.h)(0x68187A33)
 F (.\hardware\pwm.h)(0x6818745D)()
 F (.\hardware\timer3.h)(0x68182432)()
 F (.\hardware\time3.c)(0x68182877)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib -I ./start -I ./sys -I ./user -I ./hardware-IC:/keil/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ./objects/time3.o -MMD)
@@ -1088,7 +1095,7 @@ I (lib\stm32f10x_usart.h)(0x61605445)
 I (lib\stm32f10x_wwdg.h)(0x61605445)
 I (lib\misc.h)(0x68109191)
 I (hardware\timer3.h)(0x68182432)
-I (user\config.h)(0x681872B8)
+I (user\config.h)(0x68187FAF)
 I (hardware\led.h)(0x68175E80)
 I (hardware\key.h)(0x68175E80)
 I (sys\Delay.h)(0x6130920D)
@@ -1096,3 +1103,43 @@ I (sys\OLED.h)(0x68175E80)
 I (hardware\exti.h)(0x68175E80)
 I (hardware\timer2.h)(0x68175E80)
 I (hardware\pwm.h)(0x6818745D)
+I (hardware\motor.h)(0x68187A33)
+F (.\hardware\motor.c)(0x68187D7D)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -O0 -ffunction-sections -Wall -Wextra -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ./lib -I ./start -I ./sys -I ./user -I ./hardware-IC:/keil/Keil/STM32F1xx_DFP/2.4.1/Device/Include-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o ./objects/motor.o -MMD)
+I (start\stm32f10x.h)(0x61605444)
+I (start\core_cm3.h)(0x61605444)
+I (start\system_stm32f10x.h)(0x61605444)
+I (user\stm32f10x_conf.h)(0x61605441)
+I (lib\stm32f10x_adc.h)(0x61605445)
+I (lib\stm32f10x_bkp.h)(0x61605445)
+I (lib\stm32f10x_can.h)(0x61605445)
+I (lib\stm32f10x_cec.h)(0x61605445)
+I (lib\stm32f10x_crc.h)(0x61605445)
+I (lib\stm32f10x_dac.h)(0x61605445)
+I (lib\stm32f10x_dbgmcu.h)(0x61605445)
+I (lib\stm32f10x_dma.h)(0x61605445)
+I (lib\stm32f10x_exti.h)(0x68108E98)
+I (lib\stm32f10x_flash.h)(0x61605445)
+I (lib\stm32f10x_fsmc.h)(0x61605445)
+I (lib\stm32f10x_gpio.h)(0x68108BBA)
+I (lib\stm32f10x_i2c.h)(0x61605445)
+I (lib\stm32f10x_iwdg.h)(0x61605445)
+I (lib\stm32f10x_pwr.h)(0x61605445)
+I (lib\stm32f10x_rcc.h)(0x61605445)
+I (lib\stm32f10x_rtc.h)(0x61605445)
+I (lib\stm32f10x_sdio.h)(0x61605445)
+I (lib\stm32f10x_spi.h)(0x61605445)
+I (lib\stm32f10x_tim.h)(0x681774E3)
+I (lib\stm32f10x_usart.h)(0x61605445)
+I (lib\stm32f10x_wwdg.h)(0x61605445)
+I (lib\misc.h)(0x68109191)
+I (hardware\motor.h)(0x68187A33)
+I (user\config.h)(0x68187FAF)
+I (hardware\led.h)(0x68175E80)
+I (hardware\key.h)(0x68175E80)
+I (sys\Delay.h)(0x6130920D)
+I (sys\OLED.h)(0x68175E80)
+I (hardware\exti.h)(0x68175E80)
+I (hardware\timer2.h)(0x68175E80)
+I (hardware\timer3.h)(0x68182432)
+I (hardware\pwm.h)(0x6818745D)
+F (.\hardware\motor.h)(0x68187A33)()
