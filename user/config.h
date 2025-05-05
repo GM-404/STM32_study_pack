@@ -31,7 +31,7 @@
 // 定时器3外部时钟模式暂时不可用
 #define TIMER3_EXT_MODULE   0 // (~TIMER3_INTER_MODULE) // 定时器3外部时钟模式开关
 
-#define PWM_MODULE          (1) // PWM模块开关
+#define PWM_MODULE          (1) // PWM模块开关，同时初始化定时器的PA0,PA1,PA2引脚
 #define PWM_PWM_MODULE_AFIO (0) // timer2引脚映射到AFIO的引脚定义 0为默认引脚PA0，1为重映射引脚PA15
 // 引脚定义
 #define LED_PIN GPIO_Pin_3 // 在这里定义LED的引脚  GPIOA
@@ -46,11 +46,16 @@
 
 // #define TIMER3_MODULE_PIN      GPIO_Pin_6      // 定时器3引脚定义,在使能外部时钟时使用,PA6
 // #define TIMER3_MODULE_AFIO_PIN GPIO_PinSource6 // 定时器3引脚映射到AFIO的引脚定义 与上面对应
+
 #if (PWM_PWM_MODULE_AFIO)          // 如果PWM模块引脚映射为0，则使用默认引脚
 #define PWM_MODULE_PIN GPIO_Pin_15 // 定时器2引脚映射到AFIO的引脚定义 与上面对应
 #else
 #define PWM_MODULE_PIN GPIO_Pin_0 // 定时器2引脚映射到AFIO的引脚定义 与上面对应
 #endif
+#define PWM_MODULE_Channel2_PIN GPIO_Pin_1 // 定时器2通道2引脚
+#define PWM_MODULE_Channel3_PIN GPIO_Pin_2 // 定时器2通道3引脚
+#define PWM_MODULE_Channel4_PIN GPIO_Pin_3 // 定时器2通道4引脚
+
 //  初始化模块
 void Module_Init_Config(void); // 配置函数
 
