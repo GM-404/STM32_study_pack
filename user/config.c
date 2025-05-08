@@ -34,4 +34,7 @@ void Module_Init_Config(void) // 配置函数
     if (MOTOR_MODULE) { // 直流电机模块开关
         Motor_Init();   // 直流电机初始化
     }
+    if (USART1_MODULE) {
+        Usart1_Init();
+    }
 }
