@@ -6,11 +6,18 @@ uint16_t Number_Timer3_Exti; // 计数器变量
 uint16_t lighrt = 0;         // 灯光亮度变量
 float angle     = 0;         // 舵机角度变量
 int16_t speed   = -100;      // 直流电机速度变量
+uint8_t Rx_data;             // 接收数据
 int main(void)
 {
-    Module_Init_Config(); // 配置函数
-
+    Module_Init_Config();              // 配置函数
+    OLED_ShowString(1, 1, "Rx_Data:"); // OLED显示字符串函数
+    Usart1_SendByte(0x11);
     while (1) {
+        if (Usart1_GetRxFlag() == 1) {
+            Rx_data = Usart1_GetRxFData();
+            Usart1_SendByte(Rx_data); // 将接收到的数据发送回去
+            OLED_ShowHexNum(1, 9, Rx_data, 2);
+        }
     }
 }
 // OLED_ShowString(1, 1, "Light:"); // OLED显示字符串函数

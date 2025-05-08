@@ -9,4 +9,4 @@
   lib\stm32f10x_tim.h lib\stm32f10x_usart.h lib\stm32f10x_wwdg.h \
   lib\misc.h user\config.h hardware\led.h hardware\key.h sys\Delay.h \
   sys\OLED.h hardware\exti.h hardware\timer2.h hardware\timer3.h \
-  hardware\pwm.h hardware\motor.h
+  hardware\pwm.h hardware\motor.h hardware\usart.h

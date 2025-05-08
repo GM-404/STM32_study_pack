@@ -65,8 +65,8 @@
 #define PWM_MOTOR_MODULE_PIN1   GPIO_Pin_4 // 直流电机引脚定义 GPIOA 4
 #define PWM_MOTOR_MODULE_PIN2   GPIO_Pin_5 // 直流电机引脚定义 GPIOA 5
 
-#define Uart1_Tx                GPIO_Pin_9  // PA9(如果没做复用请不要更改)
-#define Uart1_Rx                GOIO_Pin_10 // PA10(如果没做复用请不要更改)
+#define Usart1_Tx               GPIO_Pin_9  // PA9(如果没做复用请不要更改)
+#define Usart1_Rx               GPIO_Pin_10 // PA10(如果没做复用请不要更改)
 //  初始化模块
 void Module_Init_Config(void); // 配置函数
 
