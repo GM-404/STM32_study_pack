@@ -9,14 +9,31 @@ int16_t speed   = -100;      // 直流电机速度变量
 uint8_t Rx_data;             // 接收数据
 int main(void)
 {
-    Module_Init_Config();              // 配置函数
-    OLED_ShowString(1, 1, "Rx_Data:"); // OLED显示字符串函数
-    Usart1_SendByte(0x11);
+    Module_Init_Config(); // 配置函数
+    Usart1_Tx_Data_Packet[0] = 0x01;
+    Usart1_Tx_Data_Packet[1] = 0x02;
+    Usart1_Tx_Data_Packet[2] = 0x03;
+    Usart1_Tx_Data_Packet[3] = 0x04;
     while (1) {
-        if (Usart1_GetRxFlag() == 1) {
-            Rx_data = Usart1_GetRxFData();
-            Usart1_SendByte(Rx_data); // 将接收到的数据发送回去
-            OLED_ShowHexNum(1, 9, Rx_data, 2);
+        if (Get_key_value()) { // 按键扫描函数
+            Usart1_Tx_Data_Packet[0]++;
+            Usart1_Tx_Data_Packet[1]++;
+            Usart1_Tx_Data_Packet[2]++;
+            Usart1_Tx_Data_Packet[3]++;
+            Usart1_SendPacket();
+            OLED_ShowString(1, 1, "Tx_Data:"); // OLED显示字符串函数
+            OLED_ShowNum(2, 1, Usart1_Tx_Data_Packet[0], 2);
+            OLED_ShowNum(2, 4, Usart1_Tx_Data_Packet[1], 2);
+            OLED_ShowNum(2, 7, Usart1_Tx_Data_Packet[2], 2);
+            OLED_ShowNum(2, 10, Usart1_Tx_Data_Packet[3], 2);
+        }
+        OLED_ShowString(3, 1, "Rx_Data:"); // OLED显示字符串函数
+        OLED_ShowNum(3, 10, Usart1_Rx_Data, 2);
+        if (Usart1_Rx_Data_Packet_Flag == 1) {
+            OLED_ShowNum(4, 1, Usart1_Rx_Data_Packet[0], 2);
+            OLED_ShowNum(4, 4, Usart1_Rx_Data_Packet[1], 2);
+            OLED_ShowNum(4, 7, Usart1_Rx_Data_Packet[2], 2);
+            OLED_ShowNum(4, 10, Usart1_Rx_Data_Packet[3], 2);
         }
     }
 }
@@ -26,6 +43,13 @@ int main(void)
 // OLED_ShowString(2, 1, "KEY MOUDLE:"); // OLED显示字符串函数
 // OLED_ShowNum(1, 13, LED_MODULE, 1);   // OLED显示数字函数
 // OLED_ShowNum(2, 13, KEY_MODULE, 1);   // OLED显示数字函数
+
+// 接收数据
+// if (Usart1_GetRxFlag() == 1) {
+//     Rx_data = Usart1_GetRxFData();
+//     Usart1_SendByte(Rx_data); // 将接收到的数据发送回去
+//     OLED_ShowHexNum(1, 9, Rx_data, 2);
+// }
 
 // while (1) {
 //     // OLED_ShowNum(1, 13, Get_EXTI_Count(), 3); // OLED不断刷新显示Get_EXTI_Count的返回值，可以替换成CountSensor_Get(1, 5); // OLED不断刷新显示CountSensor_Get的返回值

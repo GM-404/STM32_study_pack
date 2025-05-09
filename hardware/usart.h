@@ -1,5 +1,6 @@
 ﻿// USART(Universal synchronous asynchronous receiver transmitter)通用同步异步接收传输器，uart为异步
 // 没有做复位端口，发送端口PA9,接收端口PA10
+// 串口收数据包的文本模式待补充
 #ifndef _USART_H
 #define _USART_H
 
@@ -8,8 +9,13 @@
 #include <stdio.h>  //重写printf
 #include <stdarg.h> //封装sprintf
 // // 变量在.c文件中定义
-// uint8_t Usart1_Rx_Data; // 串口1接收数据缓存
-// uint8_t Usart1_Rx_Flag; // 串口1接受标志位
+extern uint8_t Usart1_Rx_Data;                                      // 串口1接收数据缓存
+extern uint8_t Usart1_Rx_Flag;                                      // 串口1接受标志位
+#define Usart1_Tx_Data_Packet_Length 4                              // 串口1发送数据包长度
+#define Usart1_Rx_Data_Packet_Length 4                              // 串口1发送数据包长度
+extern uint8_t Usart1_Tx_Data_Packet[Usart1_Tx_Data_Packet_Length]; // 串口1发送数据包
+extern uint8_t Usart1_Rx_Data_Packet[Usart1_Rx_Data_Packet_Length]; // 串口1接收数据包
+extern uint8_t Usart1_Rx_Data_Packet_Flag;                          // 串口1接收数据包标志位
 
 void Usart1_Init(void);                                  // 串口1初始化
 void Usart1_SendByte(uint8_t data);                      // 发送一个字节
@@ -24,6 +30,8 @@ void Usart1_Printf(char *format, ...);
 void USART1_IRQHandler(void);    // 中断函数
 uint8_t Usart1_GetRxFlag(void);  // 获取接收标志位，1表示接收到数据，0表示没有接收到数据
 uint8_t Usart1_GetRxFData(void); // 获取接收到的数据
+// 发送数据包
+void Usart1_SendPacket(void);
 #endif
 
 // 使用说明
