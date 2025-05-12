@@ -258,6 +258,18 @@
           },
           {
             "path": "hardware/time3.c"
+          },
+          {
+            "path": "hardware/motor.c"
+          },
+          {
+            "path": "hardware/motor.h"
+          },
+          {
+            "path": "hardware/usart.c"
+          },
+          {
+            "path": "hardware/usart.h"
           }
         ],
         "folders": []
@@ -265,7 +277,7 @@
     ]
   },
   "outDir": "build",
-  "deviceName": "STM32F103C8",
+  "deviceName": "STM32F102C8",
   "packDir": ".pack/Keil/STM32F1xx_DFP.2.3.0",
   "miscInfo": {
     "uid": "123a53fde2e049cdb237aee4b72e79c9"
@@ -410,6 +422,23 @@
           "proType": 1,
           "speed": 8000,
           "otherCmds": ""
+        },
+        "STLink": {
+          "bin": "",
+          "proType": "SWD",
+          "resetMode": "default",
+          "runAfterProgram": true,
+          "speed": 4000,
+          "address": "0x8000000",
+          "elFile": "None",
+          "optionBytes": ".eide/target_1.st.option.bytes.ini",
+          "otherCmds": ""
+        },
+        "OpenOCD": {
+          "bin": "",
+          "target": "stm32f1x",
+          "interface": "stlink",
+          "baseAddr": "0x08000000"
         }
       },
       "custom_dep": {
@@ -423,15 +452,10 @@
           "hardware",
           "RTE/_Target_1"
         ],
-        "libList": [
-          "start",
-          "sys",
-          "user",
-          "lib",
-          "hardware"
-        ],
+        "libList": [],
         "defineList": [
-          "USE_STDPERIPH_DRIVER"
+          "USE_STDPERIPH_DRIVER",
+          "STM32F10X_MD"
         ]
       },
       "builderOptions": {
@@ -440,14 +464,13 @@
           "beforeBuildTasks": [],
           "afterBuildTasks": [],
           "global": {
-            "use-microLIB": false,
+            "use-microLIB": true,
             "output-debug-info": "enable"
           },
           "c/cpp-compiler": {
             "optimization": "level-0",
             "language-c": "c99",
             "language-cpp": "c++11",
-            "link-time-optimization": false,
             "one-elf-section-per-function": true,
             "short-enums#wchar": true,
             "warnings": "all-warnings"
@@ -458,10 +481,8 @@
           "linker": {
             "output-format": "elf",
             "misc-controls": "--diag_suppress=L6329",
-            "xo-base": "",
             "ro-base": "0x08000000",
-            "rw-base": "0x20000000",
-            "$disableOutputTask": true
+            "rw-base": "0x20000000"
           }
         }
       }

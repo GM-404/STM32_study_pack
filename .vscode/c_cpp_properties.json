@@ -3,7 +3,16 @@
         {
             "name": "windows-gcc-x64",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "h:\\jiang\\project\\temple\\lib",
+                "h:\\jiang\\project\\temple\\start",
+                "h:\\jiang\\project\\temple\\sys",
+                "h:\\jiang\\project\\temple\\user",
+                "h:\\jiang\\project\\temple\\hardware"
+            ],
+            "defines": [
+                "STM32F10X_MD",
+                "USE_STDPERIPH_DRIVER"
             ],
             "compilerPath": "D:/SDK/w64devkit/bin/gcc.exe",
             "cStandard": "${default}",
@@ -16,6 +25,7 @@
         {
             "name": "Target_1",
             "includePath": [
+                "${workspaceFolder}/**",
                 "h:\\jiang\\project\\temple\\lib",
                 "h:\\jiang\\project\\temple\\start",
                 "h:\\jiang\\project\\temple\\sys",
