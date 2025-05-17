@@ -4,11 +4,11 @@
             "name": "windows-gcc-x64",
             "includePath": [
                 "${workspaceFolder}/**",
-                "h:\\jiang\\project\\temple\\lib",
-                "h:\\jiang\\project\\temple\\start",
-                "h:\\jiang\\project\\temple\\sys",
-                "h:\\jiang\\project\\temple\\user",
-                "h:\\jiang\\project\\temple\\hardware"
+                "h:\\jiang\\project\\STM32_study_pack\\lib",
+                "h:\\jiang\\project\\STM32_study_pack\\start",
+                "h:\\jiang\\project\\STM32_study_pack\\sys",
+                "h:\\jiang\\project\\STM32_study_pack\\user",
+                "h:\\jiang\\project\\STM32_study_pack\\hardware"
             ],
             "defines": [
                 "STM32F10X_MD",
@@ -26,11 +26,11 @@
             "name": "Target_1",
             "includePath": [
                 "${workspaceFolder}/**",
-                "h:\\jiang\\project\\temple\\lib",
-                "h:\\jiang\\project\\temple\\start",
-                "h:\\jiang\\project\\temple\\sys",
-                "h:\\jiang\\project\\temple\\user",
-                "h:\\jiang\\project\\temple\\hardware"
+                "h:\\jiang\\project\\STM32_study_pack\\lib",
+                "h:\\jiang\\project\\STM32_study_pack\\start",
+                "h:\\jiang\\project\\STM32_study_pack\\sys",
+                "h:\\jiang\\project\\STM32_study_pack\\user",
+                "h:\\jiang\\project\\STM32_study_pack\\hardware"
             ],
             "defines": [
                 "USE_STDPERIPH_DRIVER",

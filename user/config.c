@@ -21,13 +21,6 @@ void Module_Init_Config(void) // 配置函数
             Timer2_Out_Init();          // 定时器2初始化
         }
     }
-    if (TIMER3_MODULE) {                // 定时器3模块开关
-        if (TIMER3_INTER_MODULE) {      // 定时器3内部时钟模式开关
-            Timer3_Inter_Init();        // 定时器3初始化
-        } else if (TIMER3_EXT_MODULE) { // 定时器3外部时钟模式开关
-            Timer3_Out_Init();          // 定时器3初始化
-        }
-    }
     if (PWM_MODULE) { // PWM模块开关
         PWM_Init();   // PWM初始化
     }
@@ -36,5 +29,8 @@ void Module_Init_Config(void) // 配置函数
     }
     if (USART1_MODULE) {
         Usart1_Init();
+    }
+    if (ADC_MODULE) {
+        Adc_Init();
     }
 }

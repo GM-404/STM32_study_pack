@@ -254,12 +254,6 @@
             "path": "hardware/pwm.h"
           },
           {
-            "path": "hardware/timer3.h"
-          },
-          {
-            "path": "hardware/time3.c"
-          },
-          {
             "path": "hardware/motor.c"
           },
           {
@@ -270,6 +264,12 @@
           },
           {
             "path": "hardware/usart.h"
+          },
+          {
+            "path": "hardware/adc.c"
+          },
+          {
+            "path": "hardware/adc.h"
           }
         ],
         "folders": []
@@ -454,8 +454,7 @@
         ],
         "libList": [],
         "defineList": [
-          "USE_STDPERIPH_DRIVER",
-          "STM32F10X_MD"
+          "USE_STDPERIPH_DRIVER"
         ]
       },
       "builderOptions": {
@@ -471,6 +470,7 @@
             "optimization": "level-0",
             "language-c": "c99",
             "language-cpp": "c++11",
+            "link-time-optimization": false,
             "one-elf-section-per-function": true,
             "short-enums#wchar": true,
             "warnings": "all-warnings"
@@ -481,8 +481,10 @@
           "linker": {
             "output-format": "elf",
             "misc-controls": "--diag_suppress=L6329",
+            "xo-base": "",
             "ro-base": "0x08000000",
-            "rw-base": "0x20000000"
+            "rw-base": "0x20000000",
+            "$disableOutputTask": true
           }
         }
       }

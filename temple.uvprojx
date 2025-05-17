@@ -770,16 +770,6 @@
               <FilePath>.\hardware\pwm.h</FilePath>
             </File>
             <File>
-              <FileName>timer3.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\hardware\timer3.h</FilePath>
-            </File>
-            <File>
-              <FileName>time3.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\hardware\time3.c</FilePath>
-            </File>
-            <File>
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\hardware\motor.c</FilePath>
@@ -798,6 +788,16 @@
               <FileName>usart.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\hardware\usart.h</FilePath>
+            </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\adc.h</FilePath>
             </File>
           </Files>
         </Group>
