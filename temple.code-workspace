@@ -4,12 +4,6 @@
             "path": "."
         }
     ],
-    "settings": {
-        "files.associations": {
-            "adc.h": "c",
-            "delay.h": "c",
-            "stm32f10x.h": "c"
-        }
-    },
+    "settings": {},
     "extensions": {}
 }

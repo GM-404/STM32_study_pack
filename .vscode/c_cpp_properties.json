@@ -1,36 +1,36 @@
 {
     "configurations": [
         {
-            "name": "windows-gcc-x64",
-            "includePath": [
-                "${workspaceFolder}/**",
-                "h:\\jiang\\project\\STM32_study_pack\\lib",
-                "h:\\jiang\\project\\STM32_study_pack\\start",
-                "h:\\jiang\\project\\STM32_study_pack\\sys",
-                "h:\\jiang\\project\\STM32_study_pack\\user",
-                "h:\\jiang\\project\\STM32_study_pack\\hardware"
+            "name": "windows-gcc-x64", // 配置名称,针对 Windows 平台上的 GCC 编译器配置。
+            "includePath": [ // 包含头文件路径
+                "${workspaceFolder}/**" //  // 当前工作区的所有文件,**表示所有子目录
+                // "${workspaceFolder}/lib",
+                // "${workspaceFolder}/start",
+                // "${workspaceFolder}/sys",
+                // "${workspaceFolder}/user",
+                // "${workspaceFolder}/hardware"
             ],
-            "defines": [
+            "defines": [ // 定义宏
                 "STM32F10X_MD",
                 "USE_STDPERIPH_DRIVER"
             ],
-            "compilerPath": "D:/SDK/w64devkit/bin/gcc.exe",
+            "compilerPath": "D:/SDK/w64devkit/bin/gcc.exe", //编译器路径
             "cStandard": "${default}",
             "cppStandard": "${default}",
             "intelliSenseMode": "windows-gcc-x64",
             "compilerArgs": [
-                ""
+                "-Wno-unsafe-buffer-usage" // 全局禁用警告， // 禁用不安全缓冲区使用的警告
             ]
         },
         {
             "name": "Target_1",
             "includePath": [
-                "${workspaceFolder}/**",
-                "h:\\jiang\\project\\STM32_study_pack\\lib",
-                "h:\\jiang\\project\\STM32_study_pack\\start",
-                "h:\\jiang\\project\\STM32_study_pack\\sys",
-                "h:\\jiang\\project\\STM32_study_pack\\user",
-                "h:\\jiang\\project\\STM32_study_pack\\hardware"
+                "${workspaceFolder}/**"
+                // "${workspaceFolder}/lib",
+                // "${workspaceFolder}/start",
+                // "${workspaceFolder}/sys",
+                // "${workspaceFolder}/user",
+                // "${workspaceFolder}/hardware"
             ],
             "defines": [
                 "USE_STDPERIPH_DRIVER",
@@ -89,7 +89,7 @@
                 "__GNUC_MINOR__=2",
                 "__GNUC_PATCHLEVEL__=1"
             ],
-            "intelliSenseMode": "${default}"
+            "intelliSenseMode": "${default}" // 使用默认的IntelliSense模式
         }
     ],
     "version": 4
