@@ -47,7 +47,7 @@ void PWM_Init(void)
     TIM_Cmd(TIM2, ENABLE); // 使能TIM3
 }
 
-void PWM_Breathe_SetCompare1(uint16_t light) // 设置通道1为呼吸
+void PWM_Breathe_SetCompare1(uint16_t light) // 设置通道1为呼吸，这里复用到了PA15
 {
     // uint16_t i = 0; // 定义变量i
     // for (i = 0; i <= 100; i++) {
@@ -58,8 +58,4 @@ void PWM_Breathe_SetCompare1(uint16_t light) // 设置通道1为呼吸
     //     TIM_SetCompare1(TIM2, 100 - i); // 设置占空比 // 依次将定时器的CCR寄存器设置为100~0，PWM占空比逐渐减小，LED逐渐变暗
     //     Delay_ms(10);                   // 延时10ms
     // }
-}
-void PWM_Enjine_SetCompare2(uint16_t light) // 设置通道2
-{
-    TIM_SetCompare2(TIM2, light);
 }

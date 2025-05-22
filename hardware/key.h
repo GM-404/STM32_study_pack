@@ -21,6 +21,9 @@ void KEY_Init(void); // 按键初始化函数
  *@ return uint8_t key_value = 1 : 按键按下:
  *         uint8_t key_value = 0 : 按键未按下
  */
-uint8_t Get_key_value(void); // 按键扫描函数
+uint8_t Get_key0_value(void);  // 按键扫描函数
+uint8_t Get_key1_value(void);  // 按键扫描函数
+uint8_t Get_key10_value(void); // 按键扫描函数
+uint8_t Get_key11_value(void); // 按键扫描函数
 
 #endif // _KEY_H_

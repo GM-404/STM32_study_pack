@@ -1,5 +1,4 @@
-﻿#include "stm32f10x.h " // STM32F10x头文件
-
+﻿
 #include "key.h" // 按键头文件
 #include "Delay.h"
 
@@ -19,14 +18,56 @@ void KEY_Init(void) // 按键初始化
  *@brief 按键扫描函数
  *@ return 1 : 按键按下 1 : 按键未按下 0
  */
-uint8_t Get_key_value(void) // 按键扫描函数
+uint8_t Get_key0_value(void) // 按键扫描函数
 {
-    uint8_t key_value = 0;                            // 按键值
-    if (GPIO_ReadInputDataBit(GPIOB, KEY_PIN) == 0) { // 如果按键按下
+    uint8_t key_value = 0;                               // 按键值
+    if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0) == 0) { // 如果按键按下
         // Delay_ms(10);                                           // 延时10ms去抖动
-        if (GPIO_ReadInputDataBit(GPIOB, KEY_PIN) == 0) {       // 如果按键仍然按下
-            while (GPIO_ReadInputDataBit(GPIOB, KEY_PIN) == 0); // 等待按键释放
-            key_value = 1;                                      // 返回
+        if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0) == 0) {       // 如果按键仍然按下
+            while (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0) == 0); // 等待按键释放
+            key_value = 1;                                         // 返回
+        } else {
+            key_value = 0;
+        }
+    }
+    return key_value; // 返回按键值
+}
+uint8_t Get_key1_value(void) // 按键扫描函数
+{
+    uint8_t key_value = 0;                               // 按键值
+    if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_1) == 0) { // 如果按键按下
+        // Delay_ms(10);                                           // 延时10ms去抖动
+        if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0) == 1) {       // 如果按键仍然按下
+            while (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_1) == 0); // 等待按键释放
+            key_value = 1;                                         // 返回
+        } else {
+            key_value = 0;
+        }
+    }
+    return key_value; // 返回按键值
+}
+uint8_t Get_key10_value(void) // 按键扫描函数
+{
+    uint8_t key_value = 0;                                // 按键值
+    if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_10) == 0) { // 如果按键按下
+        // Delay_ms(10);                                           // 延时10ms去抖动
+        if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_10) == 0) {       // 如果按键仍然按下
+            while (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_10) == 0); // 等待按键释放
+            key_value = 1;                                          // 返回
+        } else {
+            key_value = 0;
+        }
+    }
+    return key_value; // 返回按键值
+}
+uint8_t Get_key11_value(void) // 按键扫描函数
+{
+    uint8_t key_value = 0;                                // 按键值
+    if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_11) == 0) { // 如果按键按下
+        // Delay_ms(10);                                           // 延时10ms去抖动
+        if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_11) == 0) {       // 如果按键仍然按下
+            while (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_11) == 0); // 等待按键释放
+            key_value = 1;                                          // 返回
         } else {
             key_value = 0;
         }

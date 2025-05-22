@@ -8,5 +8,4 @@
 #include "stm32f10x.h"                        // STM32F10x头文件
 void PWM_Init(void);                          // PWM初始化函数
 void PWM_Breathe_SetCompare1(uint16_t light); // 设置PWM1的占空比函数
-void PWM_Enjine_SetCompare2(uint16_t light);  // 设置PWM2的占空比函数
 #endif                                        /* __PWM_H */
