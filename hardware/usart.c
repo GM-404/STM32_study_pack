@@ -1,11 +1,14 @@
 ﻿
 #include "usart.h"
 // 变量
-uint8_t Usart1_Rx_Data;                                      // 串口1接收数据缓存
-uint8_t Usart1_Rx_Flag;                                      // 串口1接受标志位
-uint8_t Usart1_Tx_Data_Packet[Usart1_Tx_Data_Packet_Length]; // 串口1发送数据包
-uint8_t Usart1_Rx_Data_Packet[Usart1_Rx_Data_Packet_Length]; // 串口1接收数据包
-uint8_t Usart1_Rx_Data_Packet_Flag;                          // 串口1接收数据包标志位
+uint8_t Usart1_Rx_Data;                                          // 串口1接收数据缓存
+uint8_t Usart1_Rx_Flag;                                          // 串口1接受标志位
+uint8_t Usart1_Tx_Data_Packet[Usart1_Tx_Data_Packet_Length];     // 串口1发送数据包
+uint8_t Usart1_Rx_Data_Packet[Usart1_Rx_Data_Packet_Length];     // 串口1接收数据包
+uint8_t Usart1_Rx_Data_Packet_Flag;                              // 串口1接收数据包标志位
+uint8_t Usart1_Rx_Data_Packet_String_Flag;                       // 串口1接收文本包标志位
+char Usart1_Tx_Data_Packet_String[Usart1_Tx_Char_Packet_Length]; // 串口1发送文本格式包
+char Usart1_Rx_Data_Packet_String[Usart1_Rx_Char_Packet_Length]; // 串口1接收文本格式包
 void Usart1_Init(void)
 {
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
@@ -23,7 +26,7 @@ void Usart1_Init(void)
     GPIO_Init(GPIOA, &GPIO_InitStructure); // 将引脚初始化为复用推挽输出
 
     USART_InitTypeDef USART_InitStructure;
-    USART_InitStructure.USART_BaudRate            = 115200;                         // 波特率
+    USART_InitStructure.USART_BaudRate            = Usart1_BaudRate;                // 波特率
     USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None; // 无硬件流控
     USART_InitStructure.USART_WordLength          = USART_WordLength_8b;            // 8位数据长度
     USART_InitStructure.USART_StopBits            = USART_StopBits_1;               // 1个停止位
@@ -138,25 +141,26 @@ void Usart1_Printf(char *format, ...)
  *           函数名为预留的指定名称，可以从启动文件复制
  *           请确保函数名正确，不能有任何差异，否则中断函数将不能进入
  */
+// 中断函数数据包格式
+#if (!Usart1_MDOE)
 void USART1_IRQHandler(void)
 {
     static uint8_t Usart1_Rx_Packet_static     = 0; // 定义接收状态机标志位
     static uint8_t Usart1_Rx_Data_Packet_Index = 0; // 定义接收数据包数据接收到第几个了
     if (USART_GetITStatus(USART1, USART_IT_RXNE) == SET) {
         Usart1_Rx_Data = USART_ReceiveData(USART1);
-        Usart1_Rx_Flag = 1; // 表示接收到数据
-        if (Usart1_Rx_Packet_static == 0) {
+        if (Usart1_Rx_Packet_static == 0 && Usart1_Rx_Data_Packet_Flag == 0) {
             if (Usart1_Rx_Data == 0xFF) { // 接收状态机状态0，判断接收到的数据是否为帧头
                 Usart1_Rx_Packet_static     = 1;
                 Usart1_Rx_Data_Packet_Index = 0; // 重置接收数据包数据接收到第几个了,也即是为接收数据做准备
             }
-        } else if (Usart1_Rx_Packet_static == 1) {
+        } else if (Usart1_Rx_Packet_static == 1 && Usart1_Rx_Data_Packet_Flag == 0) {
             Usart1_Rx_Data_Packet[Usart1_Rx_Data_Packet_Index] = Usart1_Rx_Data;
             Usart1_Rx_Data_Packet_Index++;
             if (Usart1_Rx_Data_Packet_Index == Usart1_Rx_Data_Packet_Length) { // 判断接收到的数据是否够了，够了就进入状态2等待判断帧尾
                 Usart1_Rx_Packet_static = 2;
             }
-        } else if (Usart1_Rx_Packet_static == 2) { // 接收状态机状态2，判断接收到的数据是否为帧尾
+        } else if (Usart1_Rx_Packet_static == 2 && Usart1_Rx_Data_Packet_Flag == 0) { // 接收状态机状态2，判断接收到的数据是否为帧尾
             if (Usart1_Rx_Data == 0xFE) {
                 Usart1_Rx_Packet_static    = 0; // 回到等待帧头的位置
                 Usart1_Rx_Data_Packet_Flag = 1; // 表示接收到数据包
@@ -165,19 +169,67 @@ void USART1_IRQHandler(void)
         USART_ClearITPendingBit(USART1, USART_IT_RXNE);
     }
 }
-uint8_t Usart1_GetRxFData(void)
+#endif
+#if (Usart1_MDOE)
+// 目前帧头为@，帧尾为\r\n
+void USART1_IRQHandler(void)
 {
-    return Usart1_Rx_Data;
+    static uint8_t Usart1_Rx_Packet_static_String     = 0; // 定义接收状态机标志位
+    static uint8_t Usart1_Rx_Data_Packet_String_Index = 0; // 定义接收数据包数据接收到第几个了
+    if (USART_GetITStatus(USART1, USART_IT_RXNE) == SET) {
+        Usart1_Rx_Data = USART_ReceiveData(USART1);
+        if (Usart1_Rx_Packet_static_String == 0 && Usart1_Rx_Data_Packet_String_Flag == 0) {
+            if (Usart1_Rx_Data == '@') { // 接收状态机状态0，判断接收到的数据是否为帧头
+                Usart1_Rx_Packet_static_String     = 1;
+                Usart1_Rx_Data_Packet_String_Index = 0; // 重置接收数据包数据接收到第几个了,也即是为接收数据做准备
+            }
+        } else if (Usart1_Rx_Packet_static_String == 1 && Usart1_Rx_Data_Packet_String_Flag == 0) { // 识别出来帧头之后先看下一个字符是不是帧尾
+            if (Usart1_Rx_Data == '\r') {                                                           // 如果是，直接跳转，如果不是，继续接收
+                Usart1_Rx_Packet_static_String = 2;
+
+            } else {
+                Usart1_Rx_Data_Packet_String[Usart1_Rx_Data_Packet_String_Index] = Usart1_Rx_Data;
+                Usart1_Rx_Data_Packet_String_Index++;
+            }
+        } else if (Usart1_Rx_Packet_static_String == 2 && Usart1_Rx_Data_Packet_String_Flag == 0) { // 接收状态机状态2，判断接收到的数据是否为帧尾
+            if (Usart1_Rx_Data == '\n') {
+                Usart1_Rx_Packet_static_String                                   = 0;    // 回到等待帧头的位置
+                Usart1_Rx_Data_Packet_String[Usart1_Rx_Data_Packet_String_Index] = '\0'; // 表示字符串接收结束,给该字符串添加结束符
+                Usart1_Rx_Data_Packet_String_Flag                                = 1;    // 表示接收到文本包
+            }
+        }
+        USART_ClearITPendingBit(USART1, USART_IT_RXNE);
+    }
 }
-uint8_t Usart1_GetRxFlag(void)
+#endif
+
+uint8_t Usart1_Get_Rx_Flag(void) // 返回接收一个字符标志位
 {
     if (Usart1_Rx_Flag == 1) {
+        // 一些操作放这里面，可以有效避免覆盖问题，或者后面手动将标志位清零
         Usart1_Rx_Flag = 0;
         return 1;
     }
     return 0;
 }
-
+uint8_t Usart1_Get_Rx_Data_Packet_Flag(void) // 返回接收到数据包标志位
+{
+    if (Usart1_Rx_Data_Packet_Flag == 1) {
+        // 一些操作放这里面，可以有效避免覆盖问题，或者后面手动将标志位清零
+        Usart1_Rx_Data_Packet_Flag = 0;
+        return 1;
+    }
+    return 0;
+}
+uint8_t Usart1_Get_Rx_String_Packet_Flag(void) // 返回接收文本包标志位
+{
+    if (Usart1_Rx_Data_Packet_String_Flag == 1) {
+        // 一些操作放这里面，可以有效避免覆盖问题，或者后面手动将标志位清零
+        Usart1_Rx_Data_Packet_String_Flag = 0;
+        return 1;
+    }
+    return 0;
+}
 // 使用前请按照如下格式声明如下
 //  Usart1_Tx_Data_Packet[0] = 0x01;
 //          Usart1_Tx_Data_Packet[1] = 0x02;

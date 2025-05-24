@@ -8,6 +8,7 @@
 /*参数设置-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --*/
 
 // 包含头文件
+#include <string.h> // 字符串头文件
 #include "led.h"    // LED头文件
 #include "key.h"    // 按键头文件
 #include "Delay.h"  // 延时头文件
@@ -32,7 +33,7 @@
 #define PWM_PWM_MODULE_AFIO (0) // timer2引脚映射到AFIO的引脚定义 0为默认引脚PA0，1为重映射引脚PA15
 #define MOTOR_MODULE        (0) // 电机模块开关
 
-#define USART1_MODULE       (0) // USART模块开关
+#define USART1_MODULE       (1) // USART模块开关
 #define ADC_MODULE          (1) // ADC模块开关
 // 引脚定义
 #define LED_PIN GPIO_Pin_3 // 在这里定义LED的引脚  GPIOA
