@@ -9,7 +9,7 @@ uint8_t Key4_Value       = 0; // 判断按键值按下了几次
 uint8_t all_number       = 8; // 总车位
 uint8_t CNBR_Number      = 0; // CNBR类车数量
 uint8_t VNBR_Number      = 0; // VNBR类车数量
-uint8_t IDLE_Number      = 0; // 空闲车位
+uint8_t IDLE_Number      = 8; // 空闲车位
 static int32_t CNBR_Rate = 3; // CNBR类车费率
 static int32_t VNBR_Rate = 2; // VNBR类车费率
 
@@ -26,9 +26,23 @@ int main(void)
     OLED_ShowNum(4, 11, (uint32_t)IDLE_Number, 1);
     while (1) {
         IDLE_Number = all_number - CNBR_Number - VNBR_Number; // 空闲车位
-        // 通信功能
-        Usart2_Proc();
+                                                              // 通信功能
+        if (Usart1_Get_Rx_String_Packet_Flag())               // 返回接收文本包标志位
+        {
+            printf("RX:");
+            printf("%s\r\n", Usart1_Rx_Data_Packet_String);
 
+            // 检测字符串是否合法
+            if (StringCheck() == 1) {
+                printf("车辆检查无误，正在查询车位信息，请稍等\r\n");
+                // JudgeTheCar_In_or_Out()里面有打印函数，所以当第一个条件不满足时，会打印两次
+                if (JudgeTheCar_In_or_Out() == 0) {
+                    InCar(); // 入库
+                } else if (JudgeTheCar_In_or_Out() == 1) {
+                    OutStorage(); // 出库
+                }
+            }
+        }
         if (Get_key0_value()) // 界面切换
         {
             if (LCD_Mode == 1) {
